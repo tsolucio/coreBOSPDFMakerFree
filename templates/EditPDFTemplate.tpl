@@ -10,7 +10,7 @@
  ********************************************************************************/
 -->*}
 {* ITS4YOU TT0093 VlMe N *}
-<script language="JAVASCRIPT" type="text/javascript" src="include/js/smoothscroll.js"></script>
+<script type="text/javascript" src="include/js/smoothscroll.js"></script>
 {include file='modules/PDFMaker/Buttons_List.tpl'}
 <table align="center" border="0" cellpadding="0" cellspacing="0" width="98%">
 <form name="PDFMakerEdit" action="index.php?module=PDFMaker&action=SavePDFTemplate" method="post" enctype="multipart/form-data" onsubmit="VtigerJS_DialogBox.block();">
@@ -441,11 +441,11 @@
                     </div>
                     
                     <script type="text/javascript">
-                    	{php} if (file_exists("kcfinder/browse.php")) { {/php}
+                    	{if (file_exists("kcfinder/browse.php"))}
                             {literal} CKEDITOR.replace( 'body',{customConfig:'../../../modules/PDFMaker/fck_config_kcfinder.js'} );  {/literal} 
-                        {php} } else { {/php} 
+                        {else}
                             {literal} CKEDITOR.replace( 'body',{customConfig:'../../../modules/PDFMaker/fck_config.js'} ); {/literal} 
-                        {php} } {/php}
+                        {/if}
                     </script>
                     
                     {*********************************************Header DIV*************************************************}
@@ -454,11 +454,11 @@
                     </div>
                     
                     <script type="text/javascript">
-                    	{php} if (file_exists("kcfinder/browse.php")) { {/php}
+                    	{if file_exists("kcfinder/browse.php")}
                             {literal} CKEDITOR.replace( 'header_body',{customConfig:'../../../modules/PDFMaker/fck_config_kcfinder.js'} );  {/literal} 
-                        {php} } else { {/php} 
+                        {else} 
                             {literal} CKEDITOR.replace( 'header_body',{customConfig:'../../../modules/PDFMaker/fck_config.js'} ); {/literal} 
-                        {php} } {/php}
+                        {/if}
                     </script>
                     {*********************************************Footer DIV*************************************************}
                     <div style="display:none;" id="footer_div2">
@@ -466,18 +466,18 @@
                     </div>
 
                     <script type="text/javascript">
-                    	{php} if (file_exists("kcfinder/browse.php")) { {/php}
+                    	{if file_exists("kcfinder/browse.php")}
                             {literal} CKEDITOR.replace( 'footer_body',{customConfig:'../../../modules/PDFMaker/fck_config_kcfinder.js'} );  {/literal} 
-                        {php} } else { {/php} 
+                        {else}
                             {literal} CKEDITOR.replace( 'footer_body',{customConfig:'../../../modules/PDFMaker/fck_config.js'} ); {/literal} 
-                        {php} } {/php}
+                        {/if}
                     </script>
                      
-                    {php} if (file_exists("kcfinder/browse.php")) { {/php}
+                    {if file_exists("kcfinder/browse.php")}
                             {literal} <script type="text/javascript" src="modules/PDFMaker/fck_config_kcfinder.js"></script> {/literal} 
-                    {php} } else { {/php} 
+                    {else} 
                             {literal} <script type="text/javascript" src="modules/PDFMaker/fck_config.js"></script> {/literal} 
-                    {php} } {/php}                                        
+                    {/if}
                         
 
                     <table width="100%"  border="0" cellspacing="0" cellpadding="5" >

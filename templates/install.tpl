@@ -188,35 +188,24 @@ function changeInstallType(type)
    {rdelim}
 {rdelim}
 
-{literal}    
+{literal}
 function controlPermissions()
 {
-    
-    
-    var url = "module=PDFMaker&action=PDFMakerAjax&file=controlPermissions";
-    new Ajax.Request(
-                    'index.php',
-                      {queue: {position: 'end', scope: 'command'},
-                              method: 'post',
-                              postBody:url,
-                              onComplete: function(response) {
-                                      document.getElementById('list_permissions').innerHTML = response.responseText;
-                                      
-                                      bad_files_count = document.getElementById('bad_files').value;
-                                      
-                                      type = document.getElementById('installexpress').checked;
-                                      
-                                      if (type == true && bad_files_count == "0")
-                                      {
-                                          document.getElementById('next_button').disabled = false;
-                                          document.getElementById('next_button').style.display = "inline";
-                                          
-                                          document.getElementById('btn_control_permissions').style.display = "none"; 
-                                      }
-                              }
-                      }
-                      );
-                  
+	var url = "module=PDFMaker&action=PDFMakerAjax&file=controlPermissions";
+	fetch('index.php?'+ url, {
+		credentials: 'same-origin'
+	}).then(function(response) {
+		return response.text();
+	}).then(function(data) {
+		document.getElementById('list_permissions').innerHTML = data;
+		bad_files_count = document.getElementById('bad_files').value;
+		type = document.getElementById('installexpress').checked;
+		if (type == true && bad_files_count == "0") {
+			document.getElementById('next_button').disabled = false;
+			document.getElementById('next_button').style.display = "inline";
+			document.getElementById('btn_control_permissions').style.display = "none";
+		}
+	});
 }
-{/literal}    
+{/literal}
 </script>

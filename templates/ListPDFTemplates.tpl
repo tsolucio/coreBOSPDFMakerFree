@@ -6,11 +6,10 @@
    * The Initial Developer of the Original Code is vtiger.
    * Portions created by vtiger are Copyright (C) vtiger.
    * All Rights Reserved.
-   *
  ********************************************************************************/
 -->*}
 {* ITS4YOU TT0093 VlMe N *}
-<script language="JAVASCRIPT" type="text/javascript" src="include/js/smoothscroll.js"></script>
+<script type="text/javascript" src="include/js/smoothscroll.js"></script>
 <script>
 function ExportTemplates()
 {ldelim}
