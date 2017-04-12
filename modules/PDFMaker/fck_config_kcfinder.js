@@ -4,6 +4,7 @@ CKEDITOR.editorConfig = function( config )
 	config.filebrowserUploadUrl = 'kcfinder/upload.php?type=images';
     
     config.toolbar = 'BodyToolbar';
+    config.allowedContent = true;
     
     config.toolbar_BodyToolbar =
     [
