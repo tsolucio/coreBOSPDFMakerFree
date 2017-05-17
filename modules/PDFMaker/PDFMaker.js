@@ -588,7 +588,7 @@ function formSelectConditions()
 											};
 		}
 		
-		$('advft_criteria').value = JSON.stringify(criteriaConditions);
+		document.getElementById('advft_criteria').value = JSON.stringify(criteriaConditions);
 		
 		var conditionGroups = vt_getElementsByName('div', "conditionGroup");
 		var criteriaGroups = [];
@@ -606,7 +606,7 @@ function formSelectConditions()
 			criteriaGroups[groupIndex] = {"groupcondition":groupCondition};
 			
 		}
-		$('advft_criteria_groups').value = JSON.stringify(criteriaGroups);
+		document.getElementById('advft_criteria').value = JSON.stringify(criteriaConditions);
 		
 		return true;
 }
