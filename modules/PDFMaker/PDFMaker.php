@@ -8,12 +8,11 @@
  * All Rights Reserved.
  *************************************************************************************/
 
-
 class PDFMaker extends CRMEntity {
 	var $log;
 	var $db;
-	
-	function PDFMaker() {
+
+	function __construct() {
 		$this->log =LoggerManager::getLogger('account');
 		$this->db = PearDatabase::getInstance();
 	}
@@ -26,11 +25,11 @@ class PDFMaker extends CRMEntity {
 		}
 	}
 	
-    function executeSql()
+	function executeSql()
 	{
 		global $adb,$vtiger_current_version;
-		
-		if($adb->num_rows($adb->query("SELECT id FROM vtiger_pdfmaker_seq"))<1)
+		$rs = $adb->query("SELECT id FROM vtiger_pdfmaker_seq");
+		if($adb->num_rows($rs)<1)
 		{
 		$adb->query("INSERT INTO vtiger_pdfmaker_seq VALUES('0')");
 		}
@@ -107,7 +106,7 @@ class PDFMaker extends CRMEntity {
 		$seqUpdate="UPDATE vtiger_links_seq SET id='".$linksid."'";
 		$adb->query($seqUpdate);
 		
-		include_once("version.php");  
+		include_once("version.php");
 		$adb->query("INSERT INTO vtiger_pdfmaker_releases (version, date, updated) VALUES('".$version."', NOW(), 1)");
 	}
 }
