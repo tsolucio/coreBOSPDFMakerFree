@@ -781,7 +781,7 @@ function InsertIntoTemplate(element)
       	       {rdelim}
                else if (selectField == 'COMPANY_LOGO')
        	       {ldelim}
-       	           insert_value = '{$COMPANYLOGO}';
+       	           insert_value = '{$COMPANYLOGO|addslashes}';
       	       {rdelim}
                else if (selectField == 'ORGANIZATION_HEADER_SIGNATURE')
        	       {ldelim}
