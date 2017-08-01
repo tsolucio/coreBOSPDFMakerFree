@@ -19,7 +19,7 @@
 <input type="hidden" name="templateid" value="{$SAVETEMPLATEID}">
 <input type="hidden" name="action" value="SavePDFTemplate">
 <input type="hidden" name="redirect" value="true">
-<tr>        
+<tr>
         <td class="showPanelBg" style="padding: 10px;" valign="top" width="100%">
 
 				<!-- DISPLAY -->
@@ -30,15 +30,15 @@
 				</table>
 				<table border=0 cellspacing=0 cellpadding=10 width=100% >
 				<tr>
-				<td> 
+				<td>
 					{if $DISPLAY_PRODUCT_DIV eq 'none'}
                       {assign var=DISPLAY_NO_PRODUCT_DIV value='block'}
-                      {assign var=DISPLAY_PRODUCT_TPL_ROW value='none'}                      
+                      {assign var=DISPLAY_PRODUCT_TPL_ROW value='none'}
                     {else}
                       {assign var=DISPLAY_NO_PRODUCT_DIV value='none'}
                       {assign var=DISPLAY_PRODUCT_TPL_ROW value='table-row'}
                     {/if}
-                    
+
                     <table width="100%" align="center" border="0" cellpadding="0" cellspacing="0">
           		    <tr><td>
                     
@@ -48,18 +48,17 @@
                           <td class="dvtUnSelectedCell" id="company_tab" onclick="showHideTab('company');" align="center" nowrap="nowrap"><b>{$MOD.LBL_OTHER_INFO}</b></td>
                           <td class="dvtUnSelectedCell" id="labels_tab" onclick="showHideTab('labels');" align="center" nowrap="nowrap"><b>{$MOD.LBL_LABELS}</b></td>
                           <td class="dvtUnSelectedCell" id="products_tab" onclick="showHideTab('products');" align="center" nowrap="nowrap"><b>{$MOD.LBL_ARTICLE}</b></td>
-           				  <td class="dvtUnSelectedCell" id="settings_tab" onclick="showHideTab('settings');" align="center" nowrap="nowrap"><b>{$MOD.LBL_SETTINGS_TAB}</b></td>           				  
+           				  <td class="dvtUnSelectedCell" id="settings_tab" onclick="showHideTab('settings');" align="center" nowrap="nowrap"><b>{$MOD.LBL_SETTINGS_TAB}</b></td>
                           <td class="dvtTabCache" style="width: 30%;" nowrap="nowrap">&nbsp;</td> 
                       </tr></table>
                     </td></tr>
-					
                      <tr><td align="left" valign="top">
                       {*********************************************PROPERTIES DIV*************************************************}
-                      <div style="diplay:block;" id="properties_div">       
+                      <div style="diplay:block;" id="properties_div">
                         <table class="dvtContentSpace" width="100%" border="0" cellpadding="3" cellspacing="0" style="padding:10px;">                        
      				
-            				 {* pdf source module and its available fields *}
-            				 <tr>
+            				{* pdf source module and its available fields *}
+            				<tr>
             						<td width="20%" valign=top class="small cellLabel">{if $TEMPLATEID eq ""}<font color="red">*</font>{/if}<strong>{$MOD.LBL_MODULENAMES}:</strong></td>
             						<td class="cellText small" valign="top">
                                 	<input type="hidden" name="modulename" id="modulename" value="{$SELECTMODULE}" >
@@ -67,24 +66,24 @@
                                         {html_options  options=$SELECT_MODULE_FIELD}
                                		</select>
         					    	<input type="button" value="{$MOD.LBL_INSERT_TO_TEXT}" class="crmButton small create" onclick="InsertIntoTemplate('modulefields');" />
-                        			</td>      						
-          					 </tr>    					
-          				 	 {* related modules and its fields *}                					
+                        			</td>
+          					 </tr>
+          				 	 {* related modules and its fields *}
                         <tr id="body_variables">
                           	<td valign=top class="small cellLabel"><strong>{$MOD.LBL_RELATED_MODULES}:</strong></td>
                           	<td class="cellText small" valign=top>
-                          
+
                                 <select name="relatedmodulesorce" id="relatedmodulesorce" class="classname" onChange="change_relatedmodule(this,'relatedmodulefields');">
                                         <option value="none">{$MOD.LBL_SELECT_MODULE}</option>
                                         {html_options  options=$RELATED_MODULES}
                                 </select>
                                 &nbsp;&nbsp;
-                          
+
                                 <select name="relatedmodulefields" id="relatedmodulefields" class="classname">
                                     <option>{$MOD.LBL_SELECT_MODULE_FIELD}</option>
                                 </select>
                               	<input type="button" value="{$MOD.LBL_INSERT_TO_TEXT}" class="crmButton small create" onclick="InsertIntoTemplate('relatedmodulefields');">
-                          	</td>      						
+                          	</td>
                         </tr>
                     {* product bloc tpl *}
                         <tr id="product_bloc_tpl_row" style="display:{$DISPLAY_PRODUCT_TPL_ROW};">                            
@@ -116,11 +115,10 @@
                                 <input type="button" value="{$MOD.LBL_INSERT_TO_TEXT}" class="crmButton small create" onclick="InsertIntoTemplate('footer_var');">
       						</td>
                         </tr>
-                                                    					
                         </table>
                       </div>
-                      
-                      {*********************************************Labels DIV*************************************************}
+
+                      {********************************************* Labels DIV *************************************************}
                       <div style="display:none;" id="labels_div">
                         <table class="dvtContentSpace" width="100%" border="0" cellpadding="3" cellspacing="0" style="padding:10px;">
                         <tr>
@@ -143,8 +141,8 @@
     					</tr>
                         </table>
                       </div>
-                      
-                      {*********************************************Company and User information DIV*************************************************}
+
+                      {********************************************* Company and User information DIV *************************************************}
                       <div style="display:none;" id="company_div">
                         <table class="dvtContentSpace" width="100%" border="0" cellpadding="3" cellspacing="0" style="padding:10px;">
                         <tr>
@@ -187,18 +185,16 @@
     						<td valign=top class="small cellLabel"><strong>{$MOD.LBL_BARCODES}:</strong></td>
     						<td class="cellText small" valign=top>
         						<select name="barcodeval" id="barcodeval" class="classname">
-                                		<optgroup label="{$MOD.LBL_BARCODES_TYPE1}">
+                                        <optgroup label="{$MOD.LBL_BARCODES_TYPE1}">
                                 		     <option value="EAN13">EAN13</option>
                                 		     <option value="ISBN">ISBN</option>
                                 		     <option value="ISSN">ISSN</option>
                                 		</optgroup>
-                                		
                                 		<optgroup label="{$MOD.LBL_BARCODES_TYPE2}">
                                 		     <option value="UPCA">UPCA</option>
                                 		     <option value="UPCE">UPCE</option>
                                 		     <option value="EAN8">EAN8</option>
                                 		</optgroup>
-                                		
                                 		<optgroup label="{$MOD.LBL_BARCODES_TYPE3}">
                                 		     <option value="EAN2">EAN2</option>
                                 		     <option value="EAN5">EAN5</option>
@@ -215,16 +211,14 @@
                                 		     <option value="UPCEP5">UPCEP5</option>
                                 		     <option value="EAN8P5">EAN8P5</option>
                                 		</optgroup>
-                                		
-                                        <optgroup label="{$MOD.LBL_BARCODES_TYPE4}">     
+                                        <optgroup label="{$MOD.LBL_BARCODES_TYPE4}">
                                 		     <option value="IMB">IMB</option>
                                 		     <option value="RM4SCC">RM4SCC</option>
                                 		     <option value="KIX">KIX</option>
                                 		     <option value="POSTNET">POSTNET</option>
                                 		     <option value="PLANET">PLANET</option>
                                 		</optgroup>
-                                		
-                                		<optgroup label="{$MOD.LBL_BARCODES_TYPE5}">    
+                                		<optgroup label="{$MOD.LBL_BARCODES_TYPE5}">
                                 		     <option value="C128A">C128A</option>
                                 		     <option value="C128B">C128B</option>
                                 		     <option value="C128C">C128C</option>
@@ -255,7 +249,7 @@
                       <div style="display:none;" id="products_div">
                         <table class="dvtContentSpace" width="100%" border="0" cellpadding="3" cellspacing="0" style="padding:10px;">
                         <tr><td>
-                          
+
                           <div id="product_div" style="display:{$DISPLAY_PRODUCT_DIV};">
                           <table width="100%"  border="0" cellspacing="0" cellpadding="5" >
             					<tr>
@@ -274,55 +268,54 @@
                                     <select name="psfields" id="psfields" class="classname">
                                         {html_options  options=$SELECT_PRODUCT_FIELD}
                                     </select>
-            						<input type="button" value="{$MOD.LBL_INSERT_TO_TEXT}" class="crmButton small create" onclick="InsertIntoTemplate('psfields');">            						
+            						<input type="button" value="{$MOD.LBL_INSERT_TO_TEXT}" class="crmButton small create" onclick="InsertIntoTemplate('psfields');">
               						</td>
             					</tr>
-            					{* products fields *}                                
+            					{* products fields *}
                                 <tr>
             						<td valign=top class="small cellLabel"><strong>*{$MOD.LBL_PRODUCTS_FIELDS}:</strong></td>
             						<td class="cellText small" valign=top>
                                     <select name="productfields" id="productfields" class="classname">
                                         {html_options  options=$PRODUCTS_FIELDS}
                                     </select>
-            						<input type="button" value="{$MOD.LBL_INSERT_TO_TEXT}" class="crmButton small create" onclick="InsertIntoTemplate('productfields');">            						
+            						<input type="button" value="{$MOD.LBL_INSERT_TO_TEXT}" class="crmButton small create" onclick="InsertIntoTemplate('productfields');">
               						</td>
             					</tr>
-                                {* services fields *}                                
+                                {* services fields *}
                                 <tr>
             						<td valign=top class="small cellLabel"><strong>*{$MOD.LBL_SERVICES_FIELDS}:</strong></td>
             						<td class="cellText small" valign=top>
                                     <select name="servicesfields" id="servicesfields" class="classname">
                                         {html_options  options=$SERVICES_FIELDS}
                                     </select>
-            						<input type="button" value="{$MOD.LBL_INSERT_TO_TEXT}" class="crmButton small create" onclick="InsertIntoTemplate('servicesfields');">            						
+            						<input type="button" value="{$MOD.LBL_INSERT_TO_TEXT}" class="crmButton small create" onclick="InsertIntoTemplate('servicesfields');">
               						</td>
-            					</tr>            					
+            					</tr>
             					{* product bloc tpl which is the same as in main Properties tab*}
-            					<tr>                            
+            					<tr>
             						<td valign=top class="small cellLabel"><strong>{$MOD.LBL_PRODUCT_BLOC_TPL}:</strong></td>
             						<td class="cellText small" valign=top>
             						<select name="productbloctpl2" id="productbloctpl2" class="classname">
                                     		{html_options  options=$PRODUCT_BLOC_TPL}
                                    </select>
                                    <input type="button" value="{$MOD.LBL_INSERT_TO_TEXT}" class="crmButton small create" onclick="InsertIntoTemplate('productbloctpl2');"/>
-              		               </td>              					
+              		               </td>
                                </tr>
                                <tr>
                                 <td colspan="2"><small>{$MOD.LBL_PRODUCT_FIELD_INFO}</small></td>
                                </tr>
             			  </table>
-                          </div>                          
-                          
+                          </div>
+
                           <div id="no_product_div" style="padding:15px;text-align:center;display:{$DISPLAY_NO_PRODUCT_DIV};">
                           <b>{$MOD.LBL_NOPRODUCT_BLOC}</b>
                           </div>
-                          
+
                         </td></tr>
                         </table>
                       </div>
-                      
-                      
-                      {*********************************************Settings DIV*************************************************}
+
+                      {********************************************* Settings DIV *************************************************}
                       <div style="display:none;" id="settings_div">
                         <table class="dvtContentSpace" width="100%" border="0" cellpadding="3" cellspacing="0" style="padding:10px;">
                         {* pdf format settings *}
@@ -387,7 +380,7 @@
                                 </table>
                           	</td>
     					</tr>
-                        {* decimal settings *}    					
+                        {* decimal settings *}
     					<tr>
     					   <td valign=top class="small cellLabel"><strong>{$MOD.LBL_DECIMALS}:</strong></td>
     						<td class="cellText small" valign="top">
@@ -395,51 +388,49 @@
                                    <tr>
                                        <td align="right" nowrap><b>{$MOD.LBL_DEC_POINT}</b></td>
                                        <td><input type="text" maxlength="2" name="dec_point" class="detailedViewTextBox" value="{$DECIMALS.point}" style="width:{$margin_input_width}"/></td>
-                                       
+
                                        <td align="right" nowrap><b>{$MOD.LBL_DEC_DECIMALS}</b></td>
                                        <td><input type="text" maxlength="2" name="dec_decimals" class="detailedViewTextBox" value="{$DECIMALS.decimals}" style="width:{$margin_input_width}"/></td>
-                                       
+
                                        <td align="right" nowrap><b>{$MOD.LBL_DEC_THOUSANDS}</b></td>
-                                       <td><input type="text" maxlength="2" name="dec_thousands"  class="detailedViewTextBox" value="{$DECIMALS.thousands}" style="width:{$margin_input_width}"/></td>                                       
+                                       <td><input type="text" maxlength="2" name="dec_thousands"  class="detailedViewTextBox" value="{$DECIMALS.thousands}" style="width:{$margin_input_width}"/></td>
                                    </tr>
                                 </table>
                           	</td>
-    					</tr>    					
+    					</tr>
                         </table>
                       </div>
-                      
-                     {************************************** END OF TABS BLOCK *************************************}                         
+
+                     {************************************** END OF TABS BLOCK *************************************}
                     </td></tr>
                     <tr><td class="small" style="text-align:center;padding:15px 0px 10px 0px;">
 					   <input type="submit" value="{$APP.LBL_APPLY_BUTTON_LABEL}" class="crmButton small create" onclick="document.PDFMakerEdit.redirect.value='false'; return savePDF();" >&nbsp;&nbsp;
-                       <input type="submit" value="{$APP.LBL_SAVE_BUTTON_LABEL}" class="crmButton small save" onclick="return savePDF();" >&nbsp;&nbsp;            			
+                       <input type="submit" value="{$APP.LBL_SAVE_BUTTON_LABEL}" class="crmButton small save" onclick="return savePDF();" >&nbsp;&nbsp;
             		   {if $smarty.request.applied eq 'true'}
             		     <input type="button" value="{$APP.LBL_CANCEL_BUTTON_LABEL}" class="crmButton small cancel" onclick="window.location.href='index.php?action=DetailViewPDFTemplate&module=PDFMaker&templateid={$SAVETEMPLATEID}&parenttab=Tools';" />
             		   {else}
                          <input type="button" value="{$APP.LBL_CANCEL_BUTTON_LABEL}" class="crmButton small cancel" onclick="window.history.back()" />
-                       {/if}            			
+                       {/if}
 					</td></tr>
                     </table>
-                    
-                   
-                    
+
                     <table class="small" width="100%" border="0" cellpadding="3" cellspacing="0"><tr>
                           <td style="width: 10px;" nowrap="nowrap">&nbsp;</td>
                           <td style="width: 15%;" class="dvtSelectedCell" id="body_tab2" onclick="showHideTab2('body');" width="75" align="center" nowrap="nowrap"><b>{$MOD.LBL_BODY}</b></td>
            				  <td class="dvtUnSelectedCell" id="header_tab2" onclick="showHideTab2('header');" align="center" nowrap="nowrap"><b>{$MOD.LBL_HEADER_TAB}</b></td>
            				  <td class="dvtUnSelectedCell" id="footer_tab2" onclick="showHideTab2('footer');" align="center" nowrap="nowrap"><b>{$MOD.LBL_FOOTER_TAB}</b></td>
-                          <td style="width: 50%;" nowrap="nowrap">&nbsp;</td> 
+                          <td style="width: 50%;" nowrap="nowrap">&nbsp;</td>
                     </tr></table>
- 
-                    {literal}   
+
+                    {literal}
                         <script type="text/javascript" src="include/ckeditor/ckeditor.js"></script>
-                    {/literal} 
+                    {/literal}
 
                     {*********************************************BODY DIV*************************************************}
                     <div style="diplay:block;" id="body_div2"> 
                         <textarea name="body" id="body" style="width:90%;height:700px" class=small tabindex="5">{$BODY}</textarea>
                     </div>
-                    
+
                     <script type="text/javascript">
                     	{if (file_exists("kcfinder/browse.php"))}
                             {literal} CKEDITOR.replace( 'body',{customConfig:'../../../modules/PDFMaker/fck_config_kcfinder.js'} );  {/literal} 
@@ -447,12 +438,12 @@
                             {literal} CKEDITOR.replace( 'body',{customConfig:'../../../modules/PDFMaker/fck_config.js'} ); {/literal} 
                         {/if}
                     </script>
-                    
+
                     {*********************************************Header DIV*************************************************}
                     <div style="display:none;" id="header_div2">
                         <textarea name="header_body" id="header_body" style="width:90%;height:200px" class="small">{$HEADER}</textarea>
                     </div>
-                    
+
                     <script type="text/javascript">
                     	{if file_exists("kcfinder/browse.php")}
                             {literal} CKEDITOR.replace( 'header_body',{customConfig:'../../../modules/PDFMaker/fck_config_kcfinder.js'} );  {/literal} 
@@ -483,15 +474,15 @@
                     <table width="100%"  border="0" cellspacing="0" cellpadding="5" >
                         <tr><td class="small" style="text-align:center;padding:10px 0px 10px 0px;" colspan="3">
     					   <input type="submit" value="{$APP.LBL_APPLY_BUTTON_LABEL}" class="crmButton small create" onclick="document.PDFMakerEdit.redirect.value='false'; return savePDF();" >&nbsp;&nbsp;
-                           <input type="submit" value="{$APP.LBL_SAVE_BUTTON_LABEL}" class="crmButton small save" onclick="return savePDF();" >&nbsp;&nbsp;            			
+                           <input type="submit" value="{$APP.LBL_SAVE_BUTTON_LABEL}" class="crmButton small save" onclick="return savePDF();" >&nbsp;&nbsp;
                 		   {if $smarty.request.applied eq 'true'}
                 		     <input type="button" value="{$APP.LBL_CANCEL_BUTTON_LABEL}" class="crmButton small cancel" onclick="window.location.href='index.php?action=DetailViewPDFTemplate&module=PDFMaker&templateid={$SAVETEMPLATEID}&parenttab=Tools';" />
                 		   {else}
                              <input type="button" value="{$APP.LBL_CANCEL_BUTTON_LABEL}" class="crmButton small cancel" onclick="window.history.back()" />
-                           {/if}            			
+                           {/if}
     		   	        </td></tr>
-                    </table>                                  
-                    
+                    </table>
+
 				</td>
 				</tr><tr><td align="center" class="small" style="color: rgb(153, 153, 153);">{$MOD.PDF_MAKER} {$VERSION} {$MOD.COPYRIGHT}</td></tr>
 				</table>
@@ -499,7 +490,6 @@
 			</tr>
                         </form>
 			</table>
- 
 <script>
 
 var selectedTab='properties';
@@ -552,7 +542,7 @@ var selected_module='{$SELECTMODULE}';
 
 function fillModuleFields(first,second_name)
 {ldelim}
-    second = document.getElementById(second_name);    
+    second = document.getElementById(second_name);
     optionTest = true;
     lgth = second.options.length - 1;
 
@@ -581,22 +571,22 @@ function fillModuleFields(first,second_name)
         objOption.innerHTML = '{$MOD.LBL_SELECT_MODULE_FIELD}';
         objOption.value = '';
         box2.appendChild(objOption);
-        
+
         optGroup = document.createElement('optgroup');
         optGroup.label = '{$MOD.LBL_COMMON_FILEINFO}';
-        box2.appendChild(optGroup); 
-        
+        box2.appendChild(optGroup);
+
         {foreach item=field key=field_val from=$FILENAME_FIELDS}
             objOption=document.createElement("option");
             objOption.innerHTML = '{$field}';
             objOption.value = '{$field_val}';
             optGroup.appendChild(objOption);
         {/foreach}
-        
+
         if(module=='Invoice' || module=='Quotes' || module=='SalesOrder' || module=='PurchaseOrder' || module=='Issuecards' || module=='Receiptcards' || module=="Creditnote" || module=="StornoInvoice")
             blocks_length-=2;
-    {rdelim}  
-     
+    {rdelim}
+
     for(b=0;b<blocks_length;b+=2)
     {ldelim}
             optGroup = document.createElement('optgroup');
@@ -616,8 +606,8 @@ function fillModuleFields(first,second_name)
                   optGroup.appendChild(objOption);
     		{rdelim}
     {rdelim}
-    
-    return module;    
+
+    return module;
 {rdelim}
 
 var all_related_modules = new Array();
@@ -627,7 +617,7 @@ var all_related_modules = new Array();
 {/foreach}
 
 function change_relatedmodulesorce(first,second_name)
-{ldelim} 
+{ldelim}
     second = document.getElementById(second_name);
 
     optionTest = true;
@@ -764,12 +754,11 @@ function InsertIntoTemplate(element)
     selectField =  document.getElementById(element).value;
 
     if (selectedTab2 == "body")
-        var oEditor = CKEDITOR.instances.body;    
+        var oEditor = CKEDITOR.instances.body;
     else if (selectedTab2 == "header")
         var oEditor = CKEDITOR.instances.header_body;
     else if (selectedTab2 == "footer")
         var oEditor = CKEDITOR.instances.footer_body;
-    
 
     if(element!='header_var' && element!='footer_var' && element!='hmodulefields' && element!='fmodulefields' && element!='dateval')
     {ldelim}
@@ -792,21 +781,19 @@ function InsertIntoTemplate(element)
                    if (element == "articelvar")
                       insert_value = '#'+selectField+'#';
                    else if (element == "relatedmodulefields")
-                      insert_value = '$R_'+selectField+'$';                   
+                      insert_value = '$R_'+selectField+'$';
                    else if(element == "productbloctpl" || element == "productbloctpl2")
                       insert_value = selectField;
                    else if(element == "global_lang")
                       insert_value = '%G_'+selectField+'%';
                    else if(element == "module_lang")
-                      insert_value = '%M_'+selectField+'%';  
+                      insert_value = '%M_'+selectField+'%';
                    else if(element == "barcodeval")
-                      insert_value = '[BARCODE|'+selectField+'=YOURCODE|BARCODE]'; 
+                      insert_value = '[BARCODE|'+selectField+'=YOURCODE|BARCODE]';
                    else if(element == "customfunction")
-                      insert_value = '[CUSTOMFUNCTION|'+selectField+'|CUSTOMFUNCTION]'; 
+                      insert_value = '[CUSTOMFUNCTION|'+selectField+'|CUSTOMFUNCTION]';
                    else
                       insert_value = '$'+selectField+'$';
-
-
                {rdelim}
                oEditor.insertHtml(insert_value);
       	 {rdelim}
@@ -814,7 +801,6 @@ function InsertIntoTemplate(element)
     {rdelim}
     else
     {ldelim}
-        
         if (selectField != '')
         {ldelim}
             if(element=='hmodulefields' || element=='fmodulefields' )
@@ -897,25 +883,23 @@ function refreshPosition(type)
 
 function showHideTab(tabname)
 {ldelim}
-    document.getElementById(selectedTab+'_tab').className="dvtUnSelectedCell";    
+    document.getElementById(selectedTab+'_tab').className="dvtUnSelectedCell";
     document.getElementById(tabname+'_tab').className='dvtSelectedCell';
-    
+
     document.getElementById(selectedTab+'_div').style.display='none';
     document.getElementById(tabname+'_div').style.display='block';
     var formerTab=selectedTab;
-    selectedTab=tabname;     
+    selectedTab=tabname;
 {rdelim}
-
-
 
 function showHideTab2(tabname)
 {ldelim}
-    document.getElementById(selectedTab2+'_tab2').className="dvtUnSelectedCell";    
+    document.getElementById(selectedTab2+'_tab2').className="dvtUnSelectedCell";
     document.getElementById(tabname+'_tab2').className='dvtSelectedCell';
-    
-    document.getElementById(selectedTab2+'_variables').style.display='none';  
+
+    document.getElementById(selectedTab2+'_variables').style.display='none';
     document.getElementById(tabname+'_variables').style.display='';
-    
+
     document.getElementById(selectedTab2+'_div2').style.display='none';
     document.getElementById(tabname+'_div2').style.display='block';
 
@@ -923,16 +907,14 @@ function showHideTab2(tabname)
     {ldelim}
         document.getElementById('no_product_div').style.display='none';
         document.getElementById('product_div').style.display = '';
-        document.getElementById('product_bloc_tpl_row').style.display='';        
+        document.getElementById('product_bloc_tpl_row').style.display='';
     {rdelim}    
     else
     {ldelim}
         document.getElementById('product_bloc_tpl_row').style.display='none';
         document.getElementById('product_div').style.display = 'none';
-        document.getElementById('no_product_div').style.display='';         
+        document.getElementById('no_product_div').style.display='';
     {rdelim}
-    
-    
     var formerTab=selectedTab2;
     selectedTab2=tabname;
 {rdelim}
@@ -942,7 +924,7 @@ function showHideTab2(tabname)
 function insertFieldIntoFilename(val)
 {
     if(val!='')
-        document.getElementById('nameOfFile').value+='$'+val+'$';    
+        document.getElementById('nameOfFile').value+='$'+val+'$';
 }
 {/literal}
 </script>
